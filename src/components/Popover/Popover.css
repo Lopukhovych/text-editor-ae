@@ -1,0 +1,27 @@
+.popover {
+    position: absolute;
+    background: rgba(189, 189, 189, 0.9);
+    opacity: 1;
+    max-height: 300px;
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.synonym__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.synonym__list span {
+    line-height: 22px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.synonym__list span:last-child {
+    border: none;
+}

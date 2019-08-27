@@ -5,8 +5,14 @@
     align-items: center;
     flex-direction: column;
     padding-top: 5px;
+    width: 100%;
 }
+
 #format-actions {
-    width: 200px;
-    margin-right: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+#format-actions button {
+    cursor: pointer;
 }

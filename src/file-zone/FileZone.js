@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 
-import getMockText from '../text.service';
 import {getSynonyms} from '../helpers/synonyms';
 import {getLocalStorage, setLocaleStorage} from '../helpers/localStorage';
 
@@ -10,12 +9,6 @@ import './FileZone.css';
 
 
 class FileZone extends PureComponent {
-
-    static getText() {
-        return getMockText().then(function (result) {
-            return result;
-        });
-    }
 
     static getParentNode() {
         let range = null;
@@ -64,16 +57,7 @@ class FileZone extends PureComponent {
             this.setState({
                 content: savedContent,
             });
-        } else {
-            FileZone.getText()
-                .then(result => {
-                    this.inputField.current.innerHTML = result;
-                    this.setState({
-                        content: result
-                    });
-                });
         }
-
     }
 
     closePopover() {
@@ -132,6 +116,7 @@ class FileZone extends PureComponent {
             valuePosition,
         } = this.state;
         let popover = null;
+        const onTextSelected = (event) => this.selectTextHandler(event)
 
         if (isPopoverOpen) {
             popover = <Popover
@@ -148,8 +133,8 @@ class FileZone extends PureComponent {
                     className=''
                     ref={this.inputField}
                     id="file" contentEditable={true}
-                    onDoubleClick={(event) => this.selectTextHandler(event)}
-                    onSelect={(event) => this.selectTextHandler(event)}
+                    onDoubleClick={onTextSelected}
+                    onSelect={onTextSelected}
                     onInput={this.inputHandler}
                     onKeyDownCapture={FileZone.onKeyDown}
                 />
